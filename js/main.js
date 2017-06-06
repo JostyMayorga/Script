@@ -1,9 +1,3 @@
-var sentences = document.getElementById('sentences');
-var buscar = document.getElementById('buscar');
-
-var palabra = "Lorem";
-
-var encontrado = false;
 
 function myFunction(obj) {
   document.getElementById('Cont').style.display = 'none';
