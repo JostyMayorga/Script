@@ -1,24 +1,36 @@
-
-function myFunction(obj) {
+function myFunction() {
   document.getElementById('Cont').style.display = 'none';
   document.getElementById('B').innerHTML = "mostrar"
-
   alert('A')
-
   var image = document.createElement("img");
   image.src = "img/visto.png";
   var nuevaimg = document.createElement("p");
   nuevaimg.appendChild(image);
   document.getElementById('Cont').appendChild(nuevaimg);
-  
-  document.getElementById("myBtn").addEventListener("click", function(){
-    hide(obj)
-  });
-
 }
 
 
+  var palabra = "este";
+  var encontrado = false;
+  var texto = document.getElementById('A');
+  var on = document.getElementById("myBtn");
+ 
+  on.addEventListener('click', function(event){
+    
+    var text = texto.textContent;
+    var regex = new RegExp('('+palabra+')', 'ig');
+    if(encontrado){
+    	text = text.replace(regex, '<span class="">$1</span>');
+    	encontrado = false;
+    }else{
+    	text = text.replace(regex, '<span class="resaltar">$1</span>');
+    	encontrado = true;
+    }
 
+    texto.innerHTML = text;
+
+
+}, false);
 function hide(obj) {
 
   if (document.getElementById('B').innerHTML == "esconder") {
@@ -31,10 +43,8 @@ function hide(obj) {
   } else {
     document.getElementById('B').innerHTML = "esconder"
     document.getElementById('Cont').style.display = 'block';
-    document.getElementById('A').style.background = '#F55';
-    for (let i = 1; i <= document.getElementsByTagName('p').length; i++){
-    document.getElementsByTagName('p')[i].style.background = '#F05';
-    }
+
+
   }
 
 
@@ -48,3 +58,4 @@ function printDOM(node, prefix) {
   }
 }
 printDOM(document, ' ')
+
